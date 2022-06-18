@@ -5,7 +5,6 @@ public class Seller extends Thread {
         super(name);
         this.carDealership = carDealership;
     }
-
     @Override
     public void run() {
         carDealership.sellCar(this);
