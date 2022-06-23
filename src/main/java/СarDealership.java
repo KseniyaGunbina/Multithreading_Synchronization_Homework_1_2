@@ -24,7 +24,6 @@ public class СarDealership {
                     }
                 }
                 Thread.sleep(WAIT_TIME);
-
             }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
