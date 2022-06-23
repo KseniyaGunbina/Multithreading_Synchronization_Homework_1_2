@@ -7,13 +7,13 @@ public class Seller extends Thread {
 
     @Override
     public void run() {
-            while (true) {
-                if ((Main.count <= Main.MAX_COUNT_OF_SALES)) {
-                    carDealership.sellCar();
-                    System.out.println("Количество продаж: " + Main.count + "\n");
-                } else break;
-            }
-            System.out.println("Достигнуто максимальное число продаж.");
+        while (true) {
+            if ((Main.count <= Main.MAX_COUNT_OF_SALES)) {
+                carDealership.sellCar();
+                System.out.println("Количество продаж: " + Main.count + "\n");
+            } else break;
+        }
+        System.out.println("Достигнуто максимальное число продаж.");
     }
 }
 
