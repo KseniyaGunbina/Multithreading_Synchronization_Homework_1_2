@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class СarDealership {
-    List<Car> cars = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
     private static final int SELL_TIME = 500;
     private static final int PRODUCTION_TIME = 1000;
     private static final int WAIT_TIME = 2000;
@@ -20,7 +20,7 @@ public class СarDealership {
                         System.out.println("Производитель Ford: 1 машина выпущена в продажу.");
                         System.out.println("Количество машин на складе: " + cars.size());
                         System.out.println("====================\n");
-                        notifyAll();
+                        notify();
                     }
                 }
                 Thread.sleep(WAIT_TIME);
