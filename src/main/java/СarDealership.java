@@ -10,7 +10,7 @@ public class СarDealership {
     public void productionOfCars() {
         try {
             while (true) {
-                synchronized (this) {
+                {
                     while (cars.size() < 2) {
                         System.out.println("====================");
                         System.out.println("Производитель Ford: Делаю 1 машину.");
@@ -20,7 +20,9 @@ public class СarDealership {
                         System.out.println("Производитель Ford: 1 машина выпущена в продажу.");
                         System.out.println("Количество машин на складе: " + cars.size());
                         System.out.println("====================\n");
-                        notify();
+                        synchronized (this) {
+                            notify();
+                        }
                     }
                 }
                 Thread.sleep(WAIT_TIME);
