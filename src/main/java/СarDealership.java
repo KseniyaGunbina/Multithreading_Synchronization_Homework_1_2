@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class СarDealership {
-    List<Car> cars = new ArrayList<>();
+    private List<Car> cars = new ArrayList<>();
     private static final int SELL_TIME = 500;
     private static final int PRODUCTION_TIME = 1000;
     private static final Lock lock = new ReentrantLock(true);
@@ -15,7 +15,6 @@ public class СarDealership {
             while (true) {
                 while (cars.size() < 2) {
                     try {
-                        lock.lock();
                         System.out.println("====================");
                         System.out.println("Производитель Ford: Делаю 1 машину.");
                         Thread.sleep(PRODUCTION_TIME);
@@ -23,7 +22,8 @@ public class СarDealership {
                         System.out.println("Производитель Ford: 1 машина выпущена в продажу.");
                         System.out.println("Количество машин на складе: " + cars.size());
                         System.out.println("====================\n");
-                        sellerCondition.signalAll();
+                        lock.lock();
+                        sellerCondition.signal();
                     } catch (InterruptedException ex) {
                         throw new RuntimeException(ex);
                     } finally {
