@@ -18,11 +18,12 @@ public class СarDealership {
                         System.out.println("====================");
                         System.out.println("Производитель Ford: Делаю 1 машину.");
                         Thread.sleep(PRODUCTION_TIME);
-                        cars.add(new Car());
                         System.out.println("Производитель Ford: 1 машина выпущена в продажу.");
+
+                        lock.lock();
+                        cars.add(new Car());
                         System.out.println("Количество машин на складе: " + cars.size());
                         System.out.println("====================\n");
-                        lock.lock();
                         sellerCondition.signal();
                     } catch (InterruptedException ex) {
                         throw new RuntimeException(ex);
